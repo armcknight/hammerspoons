@@ -1,0 +1,12 @@
+[
+  {
+    "name": "ITerm2WindowChooser",
+    "desc": "Fuzzy-searchable chooser over every iTerm2 window across all macOS Spaces.",
+    "doc": "Fuzzy-searchable chooser over every iTerm2 window, across all macOS Spaces.\n\nReads iTerm2 over AppleScript rather than using hs.window, because iTerm2's macOS window title is governed by the profile's \"Title components\" setting and typically shows job + working directory for every window. The session name — which the shell's title writes into — is more useful, and is only reachable over AppleScript without a profile change.\n\nFocusing goes through iTerm2 (select + activate) rather than hs.window:focus(), so macOS handles the Space switch itself, avoiding hs.spaces and its unreliable private APIs.\n\nRequires Automation permission for Hammerspoon to control iTerm2."
+  },
+  {
+    "name": "XcodeSCStatus",
+    "desc": "Toggle Xcode's \"Files with source-control status\" checkbox in the Project Navigator.",
+    "doc": "Toggle Xcode's \"Files with source-control status\" checkbox in the Project Navigator.\n\nWalks the Xcode accessibility tree to find the checkbox, then tries AXPress, then a direct attribute set, then a synthesized mouse click — Xcode's AX implementation does not honor all of these consistently.\n\nRequires Accessibility permission for Hammerspoon."
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "ITerm2WindowChooser",
+  "version": "1.0",
+  "title": "iTerm2 Window Chooser",
+  "author": "Andrew McKnight (andrew@mcknight.rocks)",
+  "license": "MIT",
+  "description": "Fuzzy-searchable chooser over every iTerm2 window across all macOS Spaces, driven by AppleScript session names."
+}
