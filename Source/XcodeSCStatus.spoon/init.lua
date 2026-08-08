@@ -11,7 +11,7 @@ obj.name = "XcodeSCStatus"
 obj.version = "1.0"
 obj.author = "Andrew McKnight (andrew@mcknight.rocks)"
 obj.homepage = "https://github.com/armcknight/hammerspoons"
-obj.license = "MIT"
+obj.license = "Apache-2.0"
 
 obj.targetLabel = "Files with source-control status"
 obj.hotkey = nil

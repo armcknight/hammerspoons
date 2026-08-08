@@ -95,4 +95,4 @@ zips. Adding or renaming a Spoon also means updating `docs/docs.json`.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+Apache 2.0 — see [LICENSE](LICENSE).

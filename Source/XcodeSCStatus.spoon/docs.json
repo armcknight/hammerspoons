@@ -3,6 +3,6 @@
   "version": "1.0",
   "title": "Xcode File Navigator Source Control Status Toggle",
   "author": "Andrew McKnight (andrew@mcknight.rocks)",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "description": "Toggles Xcode's “Files with source-control status” checkbox via Accessibility."
 }
