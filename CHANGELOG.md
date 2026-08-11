@@ -9,6 +9,8 @@ installed together.
 
 ## [Unreleased]
 
+## [1.0.0] 2026-08-11
+
 ### Added
 
 - Release automation: `make {patch,minor,major}` bumps `VERSION`, writes it into
