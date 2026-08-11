@@ -23,7 +23,7 @@ local obj = {}
 obj.__index = obj
 
 obj.name = "ITerm2WindowChooser"
-obj.version = "1.0"
+obj.version = "1.0.0"
 obj.author = "Andrew McKnight (andrew@mcknight.rocks)"
 obj.homepage = "https://github.com/armcknight/hammerspoons"
 obj.license = "Apache-2.0"

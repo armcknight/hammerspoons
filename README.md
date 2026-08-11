@@ -90,8 +90,31 @@ Spoons/<Name>.spoon.zip  installable artifacts, committed; regenerate via ./buil
 docs/docs.json           repo index SpoonInstall reads to resolve names
 ```
 
-After editing anything in `Source/`, run `./build.sh` and commit the refreshed
-zips. Adding or renaming a Spoon also means updating `docs/docs.json`.
+After editing anything in `Source/`, run `make build` (a wrapper around
+`./build.sh`) and commit the refreshed zips. `make verify` checks that the
+committed zips still match `Source/`, and CI runs it on every push and pull
+request, so a Spoon change can't merge without its rebuilt zip. Adding or
+renaming a Spoon also means updating `docs/docs.json`.
+
+`make help` lists every target.
+
+## Releasing
+
+`VERSION` is the source of truth, and every Spoon shares it — they are built,
+indexed, and installed together. Bump it, then deploy — needs `vrsn` and
+`prepare-release` on PATH, from the `armcknight/tools` cask:
+
+```
+make patch      # or minor / major — bumps VERSION, writes it into every Spoon,
+                # rebuilds the zips, and commits the lot together
+make deploy     # migrates the changelog's Unreleased section, tags, pushes
+```
+
+Installing does not go through the release: SpoonInstall fetches
+`docs/docs.json` and `Spoons/<Name>.spoon.zip` from the branch, so pushing to
+`main` is what ships to users. Pushing the tag publishes a GitHub release from
+the changelog section, with the zips attached, so a specific version stays
+downloadable after the branch moves on.
 
 ## License
 

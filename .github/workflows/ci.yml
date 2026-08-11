@@ -1,0 +1,22 @@
+name: CI
+
+# There is nothing to compile — the check that matters is that the committed
+# Spoon zips still match Source/. SpoonInstall downloads those zips straight off
+# the branch, so a Spoon edit that lands without its rebuilt zip ships nothing to
+# users while looking merged.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify-zips:
+    name: Verify the Spoon zips match Source/
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Verify
+      run: make verify

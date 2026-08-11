@@ -1,0 +1,38 @@
+name: release
+
+# `make deploy` migrates the changelog, tags, and pushes from a workstation. This
+# picks the tag up and delegates to armcknight/workflows' reusable release
+# pipeline, which publishes the GitHub release from that changelog section.
+#
+# Installing does not go through the release — SpoonInstall fetches
+# docs/docs.json and Spoons/<Name>.spoon.zip from the branch. The zips are
+# attached anyway so a specific version stays downloadable after the branch moves
+# on.
+
+on:
+  push:
+    tags:
+    # prepare-release names the tag after the version file exactly — bare, with
+    # no `v` prefix. A release candidate carries an `-rc.<n>` suffix.
+    - '[0-9]+.[0-9]+.[0-9]+'
+    - '[0-9]+.[0-9]+.[0-9]+-*'
+
+jobs:
+  # A tag whose zips don't match Source/ would publish Spoons nobody can
+  # reproduce from this commit. Fail before the release exists, not after.
+  verify:
+    name: Verify the Spoon zips match Source/
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Verify
+      run: make verify
+
+  release:
+    needs: verify
+    permissions:
+      contents: write
+    uses: armcknight/workflows/.github/workflows/github-release.yml@2
+    with:
+      assets: Spoons/*.spoon.zip
